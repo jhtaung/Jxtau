@@ -1,4 +1,4 @@
-# JxtauAlpha
+# Jxtau
 boilerplate for api .net core and client angular
 
 Dotnet - new web api project
