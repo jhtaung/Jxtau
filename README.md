@@ -15,7 +15,11 @@ Dotnet - EF Core
 - Install-Package Microsoft.EntityFrameworkCore.SqlServer
 - Install-Package Microsoft.EntityFrameworkCore.Design
 - Install-Package Microsoft.EntityFrameworkCore.Tools
-- dotnet ef dbcontext scaffold "Server=NEONSDI_N;Database=Appeal;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Entities -t Appeal -t AppealContacts -t AppealStatusLog -t AppealStatusType -t AppellantType -t ContactType -t Department -t MeetingSchedule -t PlanType
+- https://www.nuget.org/packages/dotnet-ef/
+- dotnet ef migrations add InitialCreate -o Data/Migrations
+- dotnet ef migrations remove
+- dotnet ef database update
+- dotnet ef database drop
 
 Angular - new project
 - npm install -g @angular/cli@latest
@@ -24,11 +28,11 @@ Angular - new project
 - cd Client
 - ng serve
 - ng add @angular/material
-- ng add @angular/cdk
-- ng g s weather –-skip-tests
-- ng g c _modules/page --module app
-- ng g interceptor _interceptors/loading
-- ng g guard _guards/auth
+- ng add @angular/flex-layout
+- ng g s servers/weather –-skip-tests
+- ng g c modules/page --module app
+- ng g i interceptors/loading
+- ng g g guards/auth
 
 Angular - resources
 - http://json2ts.com/

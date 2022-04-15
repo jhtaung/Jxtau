@@ -1,4 +1,5 @@
 using Microsoft.OpenApi.Models;
+using Server.Extensions;
 
 namespace Server
 {
@@ -14,7 +15,7 @@ namespace Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddApplicationServices(_config);
+            services.AddAppServices(_config);
             services.AddControllers();
             services.AddCors();
             services.AddSwaggerGen(c =>
