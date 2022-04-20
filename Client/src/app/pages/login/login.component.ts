@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   hide = true;
@@ -13,13 +14,32 @@ export class LoginComponent implements OnInit {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
+  resultMessage: string = '';
+  model: any = {};
 
-  constructor(private location: Location) { }
+  constructor(
+    private location: Location,
+    private accountService: AccountService
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   submit() {
     console.log(this.form.value);
+    this.model = {
+      username: this.form.value.username,
+      password: this.form.value.password,
+    };
+    this.accountService.login(this.model).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.resultMessage = 'Login Success!';
+      },
+      error: (error) => {
+        console.log(error);
+        this.resultMessage = 'Login Error!';
+      },
+    });
   }
 
   hasError(controlName: string, errorName: string) {
