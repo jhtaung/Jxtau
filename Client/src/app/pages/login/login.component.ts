@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { AccountService } from 'src/app/services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   model: any = {};
 
   constructor(
-    private location: Location,
+    private router: Router,
     private accountService: AccountService
   ) {}
 
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
       next: (response) => {
         console.log(response);
         this.resultMessage = 'Login Success!';
+        this.router.navigateByUrl('/');
       },
       error: (error) => {
         console.log(error);
@@ -47,6 +49,6 @@ export class LoginComponent implements OnInit {
   }
 
   onCancel() {
-    this.location.back();
+    this.router.navigateByUrl('/');
   }
 }

@@ -13,7 +13,12 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MembersComponent } from './pages/members/members.component';
+import { ErrorNotFoundComponent } from './pages/error-not-found/error-not-found.component';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { ErrorServerComponent } from './pages/error-server/error-server.component';
+import { ErrorTestsComponent } from './pages/error-tests/error-tests.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,11 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    MembersComponent,
+    ErrorNotFoundComponent,
+    ErrorServerComponent,
+    ErrorTestsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +42,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

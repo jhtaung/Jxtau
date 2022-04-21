@@ -26,6 +26,17 @@ export class NavMenuComponent implements OnInit {
       routerLink: '/',
     },
     {
+      text: 'Admin',
+      icon: 'account_circle',
+      children: [
+        {
+          text: 'Members',
+          icon: 'list',
+          routerLink: '/members',
+        }
+      ]
+    },
+    {
       text: 'Account',
       icon: 'account_circle',
       children: [
