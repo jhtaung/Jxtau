@@ -1,4 +1,5 @@
 using Server.Extensions;
+using Server.Middleware;
 
 namespace Server
 {
@@ -29,7 +30,7 @@ namespace Server
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
             }
 
-            // app.UseMiddleware<ExceptionMiddleware>();
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
             app.UseRouting();

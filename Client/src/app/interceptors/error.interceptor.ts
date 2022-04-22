@@ -39,7 +39,7 @@ export class ErrorInterceptor implements HttpInterceptor {
               break;
             case 401:
               this.snackBar.open(
-                error.error === null ? 'Unauthorised' : error.error,
+                error.error === null ? 'Unauthorized' : error.error,
                 error.status
               );
               break;

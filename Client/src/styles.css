@@ -12,3 +12,7 @@ body {
 .grid-container {
   margin: 20px;
 }
+
+.jh-highlight {
+  background: yellow;
+}
