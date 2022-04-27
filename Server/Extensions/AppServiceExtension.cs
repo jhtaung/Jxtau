@@ -17,19 +17,9 @@ namespace Server.Extensions
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
-            services.AddDbContext<DataContext>(options => 
-            { 
-                options.UseSqlServer(config.GetConnectionString("DefaultConnection")); 
-            });
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => 
+            services.AddDbContext<DataContext>(options =>
             {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"])),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
+                options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
             });
             services.AddSwaggerGen(c =>
             {

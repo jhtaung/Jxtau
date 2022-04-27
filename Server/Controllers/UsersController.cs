@@ -2,7 +2,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Server.DTOs;
-using Server.Entities;
 using Server.Interfaces;
 
 namespace Server.Controllers
