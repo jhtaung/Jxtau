@@ -16,7 +16,7 @@ interface IMenuItem {
 @Component({
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
-  styleUrls: ['./nav-menu.component.css']
+  styleUrls: ['./nav-menu.component.css'],
 })
 export class NavMenuComponent implements OnInit {
   menuList: IMenu[] = [
@@ -33,8 +33,8 @@ export class NavMenuComponent implements OnInit {
           text: 'Members',
           icon: 'list',
           routerLink: '/members',
-        }
-      ]
+        },
+      ],
     },
     {
       text: 'Account',
@@ -56,12 +56,10 @@ export class NavMenuComponent implements OnInit {
           routerLink: '/profile',
         },
       ],
-    }
+    },
   ];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

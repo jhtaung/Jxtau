@@ -8,13 +8,13 @@ import { MemberService } from 'src/app/services/member.service';
 @Component({
   selector: 'app-member-list',
   templateUrl: './member-list.component.html',
-  styleUrls: ['./member-list.component.css']
+  styleUrls: ['./member-list.component.css'],
 })
 export class MemberListComponent implements OnInit {
   isLoading = false;
-  orderBy = "";
-  search: string = "";
-  searchAfter: string = "";
+  orderBy = '';
+  search: string = '';
+  searchAfter: string = '';
   totalRows = 0;
   pageSize = 10;
   currentPage = 0;
@@ -30,7 +30,7 @@ export class MemberListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private memberService: MemberService) { }
+  constructor(private memberService: MemberService) {}
 
   ngOnInit(): void {
     this.setTable();
@@ -60,7 +60,7 @@ export class MemberListComponent implements OnInit {
       },
       complete: () => {
         this.isLoading = false;
-      }
+      },
     });
   }
 
@@ -71,7 +71,7 @@ export class MemberListComponent implements OnInit {
   }
 
   doSort(event: any) {
-    this.orderBy = event.active + "+" + event.direction;
+    this.orderBy = event.active + '+' + event.direction;
     // this.load();
   }
 

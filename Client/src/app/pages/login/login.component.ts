@@ -18,10 +18,7 @@ export class LoginComponent implements OnInit {
   resultMessage: string = '';
   model: any = {};
 
-  constructor(
-    private router: Router,
-    private accountService: AccountService
-  ) {}
+  constructor(private router: Router, private accountService: AccountService) {}
 
   ngOnInit(): void {}
 
@@ -32,12 +29,12 @@ export class LoginComponent implements OnInit {
       password: this.form.value.password,
     };
     this.accountService.login(this.model).subscribe({
-      next: (response) => {
+      next: response => {
         console.log(response);
         this.resultMessage = 'Login Success!';
         this.router.navigateByUrl('/');
       },
-      error: (error) => {
+      error: error => {
         console.log(error);
         this.resultMessage = 'Login Error!';
       },

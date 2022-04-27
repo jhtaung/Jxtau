@@ -31,11 +31,11 @@ export class RegisterComponent implements OnInit {
       password: this.form.value.password,
     };
     this.accountService.register(this.model).subscribe({
-      next: (response) => {
+      next: response => {
         console.log(response);
         this.resultMessage = 'Register Success!';
       },
-      error: (error) => {
+      error: error => {
         console.log(error);
         this.resultMessage = 'Register Error!';
       },

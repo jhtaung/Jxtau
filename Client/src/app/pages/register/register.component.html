@@ -7,8 +7,7 @@
           type="text"
           matInput
           placeholder="Username"
-          formControlName="username"
-        />
+          formControlName="username" />
         <mat-error *ngIf="hasError('username', 'required')">
           Username is required
         </mat-error>
@@ -18,16 +17,14 @@
           [type]="hide ? 'password' : 'text'"
           matInput
           placeholder="Password"
-          formControlName="password"
-        />
+          formControlName="password" />
         <button
           mat-icon-button
           matSuffix
           (click)="hide = !hide"
           [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide"
-        >
-          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
         <mat-error *ngIf="hasError('password', 'required')">
           Password is required

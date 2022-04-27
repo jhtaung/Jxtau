@@ -19,11 +19,11 @@ const routes: Routes = [
   { path: 'error/test', component: ErrorTestsComponent },
   { path: 'error/not-found', component: ErrorNotFoundComponent },
   { path: 'error/server', component: ErrorServerComponent },
-  { path: '**', redirectTo: 'error/not-found', pathMatch: 'full' }
+  { path: '**', redirectTo: 'error/not-found', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

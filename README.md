@@ -34,6 +34,13 @@ Angular - new project
 - ng g i interceptors/loading
 - ng g g guards/auth
 
+Angular - Prettier
+- https://dev.to/eneajaho/configure-prettier-and-eslint-with-angular-526c
+- ng add @angular-eslint/schematics
+- ng lint --fix
+- npm install prettier-eslint eslint-config-prettier eslint-plugin-prettier --save-dev
+- npx prettier --write .
+
 Angular - resources
 - http://json2ts.com/
 

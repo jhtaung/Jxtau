@@ -1,6 +1,7 @@
 using AutoMapper;
 using Server.DTOs;
 using Server.Entities;
+using Server.Extensions;
 
 namespace Server.Helpers
 {
@@ -10,7 +11,9 @@ namespace Server.Helpers
         {
             CreateMap<AppUser, MemberDto>()
                 .ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom(src => 
-                    src.Photos!.FirstOrDefault()!.Url));
+                    src.Photos!.FirstOrDefault()!.Url))
+                .ForMember(dest => dest.Age, opt => opt.MapFrom(src => 
+                    src.DateOfBirth.CalculateAge()));
             CreateMap<Photo, PhotoDto>();
         }
     }
