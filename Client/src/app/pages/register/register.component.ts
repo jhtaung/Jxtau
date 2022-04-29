@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { AccountService } from 'src/app/services/account.service';
@@ -8,7 +8,7 @@ import { AccountService } from 'src/app/services/account.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   hide = true;
   form: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -21,8 +21,6 @@ export class RegisterComponent implements OnInit {
     private location: Location,
     private accountService: AccountService
   ) {}
-
-  ngOnInit(): void {}
 
   submit() {
     console.log(this.form.value);

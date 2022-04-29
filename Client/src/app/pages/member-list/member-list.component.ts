@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,7 +10,7 @@ import { MemberService } from 'src/app/services/member.service';
   templateUrl: './member-list.component.html',
   styleUrls: ['./member-list.component.css'],
 })
-export class MemberListComponent implements OnInit {
+export class MemberListComponent implements OnInit, AfterViewInit {
   isLoading = false;
   orderBy = '';
   search: string = '';

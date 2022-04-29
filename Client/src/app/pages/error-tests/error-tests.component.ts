@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -7,13 +7,11 @@ import { environment } from 'src/environments/environment';
   templateUrl: './error-tests.component.html',
   styleUrls: ['./error-tests.component.css'],
 })
-export class ErrorTestsComponent implements OnInit {
+export class ErrorTestsComponent {
   baseUrl = environment.apiUrl;
   validationErrors: string[] = [];
 
   constructor(private http: HttpClient) {}
-
-  ngOnInit(): void {}
 
   get404Error() {
     this.http.get(this.baseUrl + 'buggy/not-found').subscribe({

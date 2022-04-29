@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 interface IMenu {
   text: string;
@@ -18,7 +18,7 @@ interface IMenuItem {
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css'],
 })
-export class NavMenuComponent implements OnInit {
+export class NavMenuComponent {
   menuList: IMenu[] = [
     {
       text: 'Home',
@@ -60,6 +60,4 @@ export class NavMenuComponent implements OnInit {
   ];
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
 import { AccountService } from 'src/app/services/account.service';
 import { Router } from '@angular/router';
 
@@ -9,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   hide = true;
   form: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -19,8 +18,6 @@ export class LoginComponent implements OnInit {
   model: any = {};
 
   constructor(private router: Router, private accountService: AccountService) {}
-
-  ngOnInit(): void {}
 
   submit() {
     console.log(this.form.value);
