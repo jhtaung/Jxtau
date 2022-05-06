@@ -1,1 +1,47 @@
-<p>profile works!</p>
+<div class="grid-container">
+  <h1 class="mat-h1">Profile</h1>
+  <form [formGroup]="form" (ngSubmit)="update()">
+    <mat-card fxFlex="50">
+      <mat-card-content>
+        <mat-form-field appearance="standard" floatLabel="always">
+          <mat-label>User Name</mat-label>
+          <input matInput formControlName="username" />
+          <mat-error>Name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="standard" floatLabel="always">
+          <mat-label>Created</mat-label>
+          <input matInput formControlName="created" />
+        </mat-form-field>
+        <mat-form-field appearance="standard" floatLabel="always">
+          <mat-label>Last Active</mat-label>
+          <input matInput formControlName="lastActive" />
+        </mat-form-field>
+        <mat-form-field appearance="standard" floatLabel="always">
+          <mat-label>Photo URL</mat-label>
+          <input matInput formControlName="photoUrl" />
+        </mat-form-field>
+        <mat-form-field appearance="standard" floatLabel="always">
+          <mat-label>Date Of Birth</mat-label>
+          <input matInput formControlName="dateOfBirth" />
+        </mat-form-field>
+        <mat-form-field appearance="standard" floatLabel="always">
+          <mat-label>Known As</mat-label>
+          <input matInput formControlName="knownAs" />
+        </mat-form-field>
+        <mat-form-field appearance="standard" floatLabel="always">
+          <mat-label>Introduction</mat-label>
+          <input matInput formControlName="introduction" />
+        </mat-form-field>
+      </mat-card-content>
+      <div mat-dialog-actions align="end">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!form.valid">
+          Submit
+        </button>
+      </div>
+    </mat-card>
+  </form>
+</div>

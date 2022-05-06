@@ -16,3 +16,17 @@ body {
 .jh-highlight {
   background: yellow;
 }
+
+.jh-snackbar-green {
+  background-color: #28a745;
+  color: white;
+}
+
+.jh-snackbar-red {
+  background-color: #dc3545;
+  color: white;
+}
+
+div.mat-simple-snackbar-action {
+  color: white !important;
+}

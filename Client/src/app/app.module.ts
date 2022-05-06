@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 import { MaterialModule } from './modules/material.module';
 
@@ -48,6 +49,7 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    AngularEditorModule,
     MaterialModule,
   ],
   providers: [

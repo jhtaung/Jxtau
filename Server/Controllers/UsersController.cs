@@ -2,6 +2,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Server.DTOs;
+using Server.Extensions;
 using Server.Interfaces;
 
 namespace Server.Controllers
@@ -28,6 +29,18 @@ namespace Server.Controllers
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
             return Ok(await _unitOfWork.UserRepo.GetMemberAsync(username));
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
+        {
+            var user = await _unitOfWork.UserRepo.GetUserByUsernameAsync(User.GetUserName());
+            
+            _mapper.Map(memberUpdateDto, user);
+            _unitOfWork.UserRepo.Update(user);
+            if (await _unitOfWork.Complete()) return NoContent();
+
+            return BadRequest("Failed to update user");
         }
     }
 }

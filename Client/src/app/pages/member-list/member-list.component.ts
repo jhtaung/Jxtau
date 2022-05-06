@@ -16,7 +16,7 @@ export class MemberListComponent implements OnInit, AfterViewInit {
   search: string = '';
   searchAfter: string = '';
   totalRows = 0;
-  pageSize = 10;
+  pageSize = 25;
   currentPage = 0;
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
@@ -24,6 +24,13 @@ export class MemberListComponent implements OnInit, AfterViewInit {
   columns = [
     { key: 'id', name: 'ID', attr: 'string' },
     { key: 'username', name: 'Username', attr: 'string' },
+    { key: 'created', name: 'Created', attr: 'date-2' },
+    { key: 'lastActive', name: 'Last Active', attr: 'date-2' },
+    { key: 'knownAs', name: 'Known As', attr: 'string' },
+    { key: 'dateOfBirth', name: 'DOB', attr: 'date-1' },
+    { key: 'age', name: 'Age', attr: 'string' },
+    { key: 'photoUrl', name: 'Photo URL', attr: 'string' },
+    // { key: 'introduction', name: 'Introduction', attr: 'string' }
   ];
 
   dataSource: MatTableDataSource<Member> = new MatTableDataSource();
@@ -52,6 +59,7 @@ export class MemberListComponent implements OnInit, AfterViewInit {
     this.isLoading = true;
     this.memberService.getMembers().subscribe({
       next: members => {
+        console.log(members);
         this.dataSource.data = members;
         this.searchAfter = this.search;
       },
@@ -67,12 +75,10 @@ export class MemberListComponent implements OnInit, AfterViewInit {
   pageChanged(event: PageEvent) {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;
-    // this.load();
   }
 
   doSort(event: any) {
     this.orderBy = event.active + '+' + event.direction;
-    // this.load();
   }
 
   doFilter() {
