@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AccountService } from 'src/app/services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -20,11 +21,13 @@ export class NavComponent {
     );
 
   constructor(
+    public accountService: AccountService,
     private breakpointObserver: BreakpointObserver,
-    public accountService: AccountService
+    private router: Router,
   ) {}
 
   logout() {
     this.accountService.logout();
+    this.router.navigateByUrl('/');
   }
 }

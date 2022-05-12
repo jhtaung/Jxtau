@@ -38,9 +38,14 @@ export class ErrorInterceptor implements HttpInterceptor {
               }
               break;
             case 401:
+              console.log('error', error);
               this.snackBar.open(
-                error.error === null ? 'Unauthorized' : error.error,
-                error.status
+                error.error === null ? 'Unauthorized' : error.error.title,
+                error.status,
+                {
+                  duration: 3000,
+                  panelClass: ['jh-snackbar-red'],
+                }
               );
               break;
             case 404:

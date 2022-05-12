@@ -18,7 +18,7 @@ export class JwtInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    let currentUser!: User | null;
+    let currentUser!: User | undefined;
 
     this.accountService.currentUser$
       .pipe(take(1))

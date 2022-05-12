@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { map, take } from 'rxjs/operators';
 import { Member } from 'src/app/models/member';
+import { User } from 'src/app/models/user';
 import { AccountService } from 'src/app/services/account.service';
 import { MemberService } from 'src/app/services/member.service';
 
@@ -16,6 +17,7 @@ import { MemberService } from 'src/app/services/member.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
+  user!: User | undefined;
   member!: Member;
   form!: FormGroup;
   config = {
@@ -29,7 +31,9 @@ export class ProfileComponent implements OnInit {
     private accountService: AccountService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+    this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
+  }
 
   ngOnInit(): void {
     this.load();
@@ -46,33 +50,22 @@ export class ProfileComponent implements OnInit {
       introduction: [],
     });
 
-    this.accountService.currentUser$.subscribe({
-      next: user => {
-        if (!user) return;
+    if (this.user === undefined) {
+      return;
+    }
 
-        this.memberService.getMember(user.username).subscribe({
-          next: member => {
-            console.log(member);
-            this.member = member;
-            this.form.setValue({
-              username: member.username,
-              created: member.created,
-              lastActive: member.lastActive,
-              photoUrl: member.photoUrl,
-              dateOfBirth: member.dateOfBirth,
-              knownAs: member.knownAs,
-              introduction: member.introduction,
-            });
-          },
-          error: error => {
-            console.log(error);
-          },
-        });
-      },
-      error: error => {
-        console.log(error);
-      },
-      complete: () => {},
+    this.memberService.getMember(this.user.username).subscribe(member => {
+      console.log(member);
+      this.member = member;
+      this.form.setValue({
+        username: member.username,
+        created: member.created,
+        lastActive: member.lastActive,
+        photoUrl: member.photoUrl,
+        dateOfBirth: member.dateOfBirth,
+        knownAs: member.knownAs,
+        introduction: member.introduction,
+      });
     });
   }
 

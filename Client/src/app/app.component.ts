@@ -8,7 +8,7 @@ import { AccountService } from './services/account.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = 'Client';
+  title = 'Jxtau';
 
   constructor(private accountService: AccountService) {}
 
@@ -17,8 +17,13 @@ export class AppComponent implements OnInit {
   }
 
   setCurrentUser() {
-    var localUser = localStorage.getItem('user');
-    const user: User = JSON.parse(localUser ?? '');
-    this.accountService.setCurrentUser(user);
+    var storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const user: User = JSON.parse(storedUser ?? '');
+      this.accountService.setCurrentUser(user);
+    } else {
+      this.accountService.setCurrentUser(undefined);
+    }
+    
   }
 }
