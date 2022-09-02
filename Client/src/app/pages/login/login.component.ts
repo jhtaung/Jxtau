@@ -31,7 +31,6 @@ export class LoginComponent {
     };
     this.accountService.login(this.model).subscribe({
       next: () => {
-        this.resultMessage = 'Login Success!';
         this.snackBar.open(
           'Login Success!', '', {
             duration: 3000,
