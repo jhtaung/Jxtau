@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { AccountService } from 'src/app/services/account.service';
 
@@ -10,9 +10,9 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class RegisterComponent {
   hide = true;
-  form: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
+  form: UntypedFormGroup = new UntypedFormGroup({
+    username: new UntypedFormControl('', [Validators.required]),
+    password: new UntypedFormControl('', [Validators.required]),
   });
   resultMessage: string = '';
   model: any;

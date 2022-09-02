@@ -1,13 +1,14 @@
 namespace Server.Extensions
 {
-    public static class DateTimeExtension
+  public static class DateTimeExtension
+  {
+    public static int CalculateAge(this DateTime dob)
     {
-        public static int CalculateAge(this DateTime dob)
-        {
-            var today = DateTime.Today;
-            var age = today.Year - dob.Year;
-            if (dob.Date > today.AddYears(-age)) age--;
-            return age;
-        }
+      var today = DateTime.Today;
+      var age = today.Year - dob.Year;
+      if (dob.Date > today.AddYears(-age))
+        age--;
+      return age;
     }
+  }
 }

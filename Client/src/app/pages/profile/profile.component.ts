@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,7 +19,7 @@ import { MemberService } from 'src/app/services/member.service';
 export class ProfileComponent implements OnInit {
   user!: User | undefined;
   member!: Member;
-  form!: FormGroup;
+  form!: UntypedFormGroup;
   config = {
     editable: true,
     spellcheck: true,
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private memberService: MemberService,
     private accountService: AccountService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private snackBar: MatSnackBar
   ) {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
